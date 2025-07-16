@@ -30,7 +30,7 @@ export async function executeQuery(query: string, params: any[] = []): Promise<a
 export async function getUserData(userId: string): Promise<any> {
   try {
     // Simulación de petición a API
-    const response = await fetch(`/api/users/${userId}`, {
+    const response = await fetch(`/taximeter/api/users/${userId}`, {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('pantera_token')}`
       }
