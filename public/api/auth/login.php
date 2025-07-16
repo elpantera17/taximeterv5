@@ -1,6 +1,6 @@
 <?php
 require_once '../config.php';
-require_once '../controllers/User_Controller.php';
+require_once __DIR__ . '/../controllers/user_controller.php';
 
 header('Content-Type: application/json');
 $input = json_decode(file_get_contents('php://input'), true);
