@@ -57,13 +57,14 @@ async function fetchApi(
 // Funciones específicas para diferentes endpoints
 export const authApi = {
   login: (email: string, password: string) =>
-    fetchApi('/auth/login', 'POST', { email, password }, false),
+   fetchApi('/taximeter/api/auth/login.php', 'POST', { email, password }, false);
+
 
   register: (userData: any) =>
-    fetchApi('/auth/register', 'POST', userData, false),
+    fetchApi('/taximeter/api/auth/register', 'POST', userData, false),
 
   logout: () =>
-    fetchApi('/auth/logout', 'POST'),
+    fetchApi('/taximeter/api/auth/logout', 'POST'),
 
   getCurrentUser: () =>
     fetchApi('/auth/me', 'GET'),
