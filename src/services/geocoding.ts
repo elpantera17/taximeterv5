@@ -385,7 +385,7 @@ async function canAccessNominatim(): Promise<boolean> {
     const response = await fetch('https://nominatim.openstreetmap.org/search?q=test&format=json&limit=1', {
       method: 'GET',
       headers: {
-        'User-Agent': 'PanteraTaximeter/1.0.0 (contact@panterataximeter.com)',
+        'User-Agent': 'PanteraTaximeter/1.0.0 (soporte@pantera24.com)',
       },
       signal: controller.signal
     });
@@ -555,7 +555,7 @@ export async function reverseGeocode(lat: number, lng: number): Promise<ReverseG
       `https://nominatim.openstreetmap.org/reverse?${params.toString()}`,
       {
         headers: {
-          'User-Agent': 'PanteraTaximeter/1.0.0 (contact@panterataximeter.com)',
+          'User-Agent': 'PanteraTaximeter/1.0.0 (soporte@pantera24.com)',
         },
         signal: controller.signal
       }
@@ -651,7 +651,7 @@ export async function searchNearbyPlaces(
             `https://nominatim.openstreetmap.org/search?${params.toString()}`,
             {
               headers: {
-                'User-Agent': 'PanteraTaximeter/1.0.0 (contact@panterataximeter.com)',
+                'User-Agent': 'PanteraTaximeter/1.0.0 (soporte@pantera24.com)',
               },
               signal: controller.signal
             }
