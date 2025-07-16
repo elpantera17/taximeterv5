@@ -2,7 +2,7 @@
 // Este archivo centraliza todas las llamadas a la API
 
 // URL base de la API
-const API_BASE_URL = '/api'; // Cambia esto a la URL de tu API en producción
+const API_BASE_URL = '/taximeter/api'; // Cambia esto a la URL de tu API en producción
 
 // Función para obtener el token de autenticación
 const getAuthToken = (): string | null => {
@@ -59,22 +59,22 @@ async function fetchApi(
 // Funciones específicas para diferentes endpoints
 export const authApi = {
   login: (email: string, password: string) => 
-    fetchApi('/auth/login', 'POST', { email, password }, false),
+    fetchApi('/taximeter/auth/login', 'POST', { email, password }, false),
   
   register: (userData: any) => 
-    fetchApi('/auth/register', 'POST', userData, false),
+    fetchApi('/taximeter/auth/register', 'POST', userData, false),
   
   logout: () => 
-    fetchApi('/auth/logout', 'POST'),
+    fetchApi('/taximeter/auth/logout', 'POST'),
   
   getCurrentUser: () => 
-    fetchApi('/auth/me', 'GET'),
+    fetchApi('/taximeter/auth/me', 'GET'),
   
   updateProfile: (userId: string, data: any) => 
     fetchApi(`/users/${userId}`, 'PUT', data),
   
   changePassword: (currentPassword: string, newPassword: string) => 
-    fetchApi('/auth/change-password', 'POST', { currentPassword, newPassword })
+    fetchApi('/taximeter/auth/change-password', 'POST', { currentPassword, newPassword })
 };
 
 export const tripsApi = {
@@ -85,7 +85,7 @@ export const tripsApi = {
     fetchApi(`/trips/${tripId}`),
   
   create: (tripData: any) => 
-    fetchApi('/trips', 'POST', tripData),
+    fetchApi('/taximeter/trips', 'POST', tripData),
   
   update: (tripId: string, tripData: any) => 
     fetchApi(`/trips/${tripId}`, 'PUT', tripData),
