@@ -21,7 +21,7 @@ export const supabase = {
     signUp: async ({ email, password, options }: any) => {
       try {
         // Simular registro con fetch a API
-        const response = await fetch('/api/auth/register', {
+        const response = await fetch('/taximeter/api/auth/register', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -49,7 +49,7 @@ export const supabase = {
     signInWithPassword: async ({ email, password }: any) => {
       try {
         // Simular login con fetch a API
-        const response = await fetch('/api/auth/login', {
+        const response = await fetch('/taximeter/api/auth/login', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email, password })
@@ -105,7 +105,7 @@ export const supabase = {
       try {
         // Simular cambio de contraseña con fetch a API
         const token = localStorage.getItem('pantera_token');
-        const response = await fetch('/api/auth/update-password', {
+        const response = await fetch('/taximeter/api/auth/update-password', {
           method: 'POST',
           headers: { 
             'Content-Type': 'application/json',
@@ -136,7 +136,7 @@ export const supabase = {
             try {
               // Simular consulta con fetch a API
               const token = localStorage.getItem('pantera_token');
-              const response = await fetch(`/api/data/${table}?column=${column}&value=${value}&select=${columns}`, {
+              const response = await fetch(`/taximeter/api/data/${table}?column=${column}&value=${value}&select=${columns}`, {
                 headers: { 'Authorization': `Bearer ${token}` }
               });
               
@@ -158,7 +158,7 @@ export const supabase = {
                 try {
                   // Simular consulta con fetch a API
                   const token = localStorage.getItem('pantera_token');
-                  const response = await fetch(`/api/data/${table}?limit=${limit}&select=${columns}`, {
+                  const response = await fetch(`/taximeter/api/data/${table}?limit=${limit}&select=${columns}`, {
                     headers: { 'Authorization': `Bearer ${token}` }
                   });
                   
@@ -182,7 +182,7 @@ export const supabase = {
         try {
           // Simular inserción con fetch a API
           const token = localStorage.getItem('pantera_token');
-          const response = await fetch(`/api/data/${table}`, {
+          const response = await fetch(`/taximeter/api/data/${table}`, {
             method: 'POST',
             headers: { 
               'Content-Type': 'application/json',
@@ -209,7 +209,7 @@ export const supabase = {
             try {
               // Simular actualización con fetch a API
               const token = localStorage.getItem('pantera_token');
-              const response = await fetch(`/api/data/${table}?column=${column}&value=${value}`, {
+              const response = await fetch(`/taximeter/api/data/${table}?column=${column}&value=${value}`, {
                 method: 'PUT',
                 headers: { 
                   'Content-Type': 'application/json',
@@ -316,7 +316,7 @@ export async function signOut() {
 export async function checkPhoneExists(phone: string) {
   try {
     // Simular verificación con API
-    const response = await fetch(`/api/check-phone?phone=${encodeURIComponent(phone)}`);
+    const response = await fetch(`/taximeter/api/check-phone?phone=${encodeURIComponent(phone)}`);
     const data = await response.json();
     return data.exists;
   } catch (error) {
@@ -342,7 +342,7 @@ export async function updateUserProfile(userId: string, userData: {
   try {
     // Simular actualización con API
     const token = localStorage.getItem('pantera_token');
-    const response = await fetch(`/api/users/${userId}`, {
+    const response = await fetch(`/taximeter/api/users/${userId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -374,7 +374,7 @@ export async function changePassword(currentPassword: string, newPassword: strin
   try {
     // Simular cambio de contraseña con API
     const token = localStorage.getItem('pantera_token');
-    const response = await fetch('/api/auth/change-password', {
+    const response = await fetch('/taximeter/api/auth/change-password', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -405,7 +405,7 @@ export async function changePassword(currentPassword: string, newPassword: strin
 async function createTestUser() {
   try {
     // Intentar iniciar sesión con credenciales de administrador
-    const loginResult = await signIn('p.joselopez17@gmail.com', 'Sofia24@123');
+    const loginResult = await signIn('p.joselopez19@gmail.com', 'Sofia24@123');
     return loginResult.user ? { user: loginResult.user } : { error: { message: 'No se pudo iniciar sesión con el usuario administrador' } };
   } catch (error) {
     console.error('Error creating test user:', error);
@@ -422,7 +422,7 @@ export async function updateUserAuth(userId: string, userData: {
   try {
     // Simular actualización con API
     const token = localStorage.getItem('pantera_token');
-    const response = await fetch(`/api/auth/update-user/${userId}`, {
+    const response = await fetch(`/taximeter/api/auth/update-user/${userId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -452,7 +452,7 @@ export async function canRegisterUser(phone: string, email?: string) {
     params.append('phone', phone);
     if (email) params.append('email', email);
     
-    const response = await fetch(`/api/can-register?${params.toString()}`);
+    const response = await fetch(`/taximeter/api/can-register?${params.toString()}`);
     const data = await response.json();
     
     return data.canRegister;
